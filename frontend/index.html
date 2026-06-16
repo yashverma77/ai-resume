@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Screening Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Recruiter Console</p>
+        <h1>Resume Screening Dashboard</h1>
+      </div>
+      <button id="refreshButton" class="icon-button" title="Refresh candidates">Refresh</button>
+    </header>
+
+    <main class="layout">
+      <section class="panel upload-panel">
+        <h2>Upload Resume</h2>
+        <form id="uploadForm">
+          <label>
+            Candidate name
+            <input name="name" type="text" required placeholder="Asha Mehta" />
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="asha@example.com" />
+          </label>
+          <label>
+            Resume file
+            <input name="file" type="file" required accept=".pdf,.docx,.txt,.png,.jpg,.jpeg,.tif,.tiff,.bmp" />
+          </label>
+          <label>
+            Job description
+            <textarea name="job_description" required rows="8" placeholder="Paste the role requirements, skills, and responsibilities."></textarea>
+          </label>
+          <button type="submit" class="primary-button">Upload and Screen</button>
+          <p id="formStatus" class="status-line"></p>
+        </form>
+      </section>
+
+      <section class="panel candidates-panel">
+        <div class="section-heading">
+          <h2>Ranked Candidates</h2>
+          <span id="candidateCount">0 candidates</span>
+        </div>
+        <div id="candidateList" class="candidate-list"></div>
+      </section>
+    </main>
+
+    <dialog id="detailsDialog">
+      <article>
+        <button id="closeDialog" class="dialog-close" title="Close">x</button>
+        <h2 id="detailsName"></h2>
+        <dl class="details-grid">
+          <div>
+            <dt>Score</dt>
+            <dd id="detailsScore"></dd>
+          </div>
+          <div>
+            <dt>Status</dt>
+            <dd id="detailsStatus"></dd>
+          </div>
+          <div>
+            <dt>Matched skills</dt>
+            <dd id="detailsSkills"></dd>
+          </div>
+        </dl>
+        <h3>Extracted Resume Text</h3>
+        <pre id="detailsText"></pre>
+      </article>
+    </dialog>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
